@@ -8,6 +8,7 @@ public class PipeSpawnerScript : MonoBehaviour
 
     public float spawnRate;
     public float heightOffset;
+    public BirdScript bird;
 
     private float timer = 0;
     
@@ -15,6 +16,7 @@ public class PipeSpawnerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        bird = GameObject.FindGameObjectWithTag( "BirdLogic" ).GetComponent< BirdScript >();
         spawnPipe();
     }
 
@@ -34,13 +36,13 @@ public class PipeSpawnerScript : MonoBehaviour
 
     private void spawnPipe()
     {
-
-        float lowestPoint = transform.position.y - heightOffset;
-        float highestPoint = transform.position.y + heightOffset;
-        Instantiate( pipe, new Vector3( transform.position.x,
-                Random.Range( lowestPoint, highestPoint )),
-                transform.rotation );
-
-
+        if (bird.getAliveStatus())
+        {
+            float lowestPoint = transform.position.y - heightOffset;
+            float highestPoint = transform.position.y + heightOffset;
+            Instantiate(pipe, new Vector3(transform.position.x,
+                    Random.Range(lowestPoint, highestPoint)),
+                    transform.rotation);
+        }
     }
 }
