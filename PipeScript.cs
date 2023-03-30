@@ -11,7 +11,7 @@ public class PipeScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bird = GameObject.FindGameObjectWithTag("BirdLogic").GetComponent< BirdScript >();
+        bird = GameObject.FindGameObjectWithTag( "BirdLogic" ).GetComponent< BirdScript >();
     }
 
     // Update is called once per frame
@@ -21,10 +21,10 @@ public class PipeScript : MonoBehaviour
         {
             transform.position += Vector3.left * moveSpeed * Time.deltaTime;
 
-            if (transform.position.x < deadZone)
+            if ( transform.position.x < deadZone )
             {
-                Debug.Log("Pipe destroyed");
-                Destroy(gameObject);
+                Debug.Log( "Pipe destroyed");
+                Destroy( gameObject );
             }
         }
     }

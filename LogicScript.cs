@@ -9,11 +9,14 @@ public class LogicScript : MonoBehaviour
     public int playerScore;
     public Text scoreText;
     public GameObject gameOverScreen;
+    public AudioSource bing;
+    public AudioSource bong;
 
 
     [ ContextMenu( "Increase Score" ) ]
     public void addScore( int scoreToAdd )
     {
+        bing.Play();
         playerScore += scoreToAdd;
         scoreText.text = playerScore.ToString();
     }
@@ -27,6 +30,7 @@ public class LogicScript : MonoBehaviour
 
     public void gameOver()
     {
+        bong.Play();
         gameOverScreen.SetActive( true );
     }
 }
