@@ -9,12 +9,15 @@ public class CloudSpawnerScript : MonoBehaviour
     public float spawnRate;
     public float heightOffset;
     private float timer = 0;
+    public float startingClouds;
 
     // Start is called before the first frame update
     void Start()
     {
-        Instantiate ( cloud, Transform.Transform)
-        spawnCloud();
+        for (int i = 0; i < startingClouds; i++)
+        {
+            spawnCloud ( Random.Range ( -24, 22 ) );
+        }
     }
 
     // Update is called once per frame
@@ -26,16 +29,21 @@ public class CloudSpawnerScript : MonoBehaviour
         }
         else
         {
-            spawnCloud();
+            spawnCloud ( transform.position.x );
             timer = 0;
         }
     }
 
-    private void spawnCloud()
+    private void spawnCloud ( float x, float y = 0 )
     {
-        float lowestPoint = transform.position.y - heightOffset;
-            float highestPoint = transform.position.y + heightOffset;
-            Instantiate( cloud, new Vector3( transform.position.x,
+        if ( y == 0 )
+        {
+            y = transform.position.y;
+        }
+
+        float lowestPoint = y - heightOffset;
+            float highestPoint = y + heightOffset;
+            Instantiate ( cloud, new Vector3( x,
                     Random.Range ( lowestPoint, highestPoint ) ),
                     transform.rotation );
     
