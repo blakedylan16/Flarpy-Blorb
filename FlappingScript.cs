@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class FlappingScript : MonoBehaviour
 {
-    //Animation flapping;
-    Animator flapping;
+    public Animator myAnimator;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        myAnimator = GetComponent< Animator >();
     }
 
     // Update is called once per frame
@@ -20,8 +19,8 @@ public class FlappingScript : MonoBehaviour
     }
 
     [ ContextMenu( "Flap" ) ]
-    void flap()
+    public void flap()
     {
-        flapping.Play();
+        myAnimator.SetTrigger("Space");
     }
 }

@@ -15,12 +15,20 @@ public class BirdScript : MonoBehaviour
     public int flapStrength;
     public Rigidbody2D myRigidBody;
     public LogicScript logic;
+    public FlappingScript flapping;
     private bool birdIsAlive = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
+        logic = GameObject
+            .FindGameObjectWithTag( "Logic" )
+            .GetComponent< LogicScript >();
+        flapping = GameObject
+            .FindGameObjectWithTag( "WingLogic" )
+            .GetComponent< FlappingScript >();
+
+
     }
 
     // Update is called once per frame
@@ -29,6 +37,7 @@ public class BirdScript : MonoBehaviour
         // when spacebar is hit, fly up
         if ( birdIsAlive && Input.GetKeyDown( KeyCode.Space ) )
         {
+            flapping.flap();
             myRigidBody.velocity = Vector2.up * flapStrength;
         }
         else if ( !birdIsAlive )
