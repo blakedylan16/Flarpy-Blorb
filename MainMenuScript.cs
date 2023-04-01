@@ -6,10 +6,11 @@ using UnityEngine.UI;
 
 public class MainMenuScript : MonoBehaviour
 {
+
     public void startGame()
     {
         SceneManager.LoadScene( "Active Game" );
-        Debug.Log("Clicked");
+        Debug.Log( "Scene changed" );
     }
 
 

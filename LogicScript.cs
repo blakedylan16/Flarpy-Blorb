@@ -7,12 +7,26 @@ using UnityEngine.SceneManagement;
 public class LogicScript : MonoBehaviour
 {
     private int playerScore;
-    public Text scoreText;
+    private int highScore;
+    public Text currentScoreText;
+    public Text highScoreText;
     public GameObject gameOverScreen;
     public GameObject scoresToStart;
     public AudioSource bing;
     public AudioSource bong;
 
+    private void Start()
+    {
+        highScore = PlayerPrefs.GetInt("highScore");
+        if ( highScore > 0 )
+        {
+            highScoreText.text = "High Score: " + highScore.ToString();
+        }
+        else
+        {
+            highScoreText.text = " ";
+        }
+    }
 
 
     [ ContextMenu( "Increase Score" ) ]
@@ -20,19 +34,14 @@ public class LogicScript : MonoBehaviour
     {
         bing.Play();
         playerScore += scoreToAdd;
-        scoreText.text = playerScore.ToString();
+        currentScoreText.text = playerScore.ToString();
     }
 
-    //public void startGame()
-    //{
-    //    SceneManager.LoadScene( "Active Game" );
-    //    bing.Play();
-    //}
 
     public void restartGame()
     {
         playerScore = 0;
-        scoreText.text = playerScore.ToString();
+        currentScoreText.text = " ";
         SceneManager.LoadScene( SceneManager.GetActiveScene().name );
     }
 
@@ -40,6 +49,12 @@ public class LogicScript : MonoBehaviour
     {
         bong.Play();
         gameOverScreen.SetActive( true );
+        if (playerScore > highScore)
+        {
+            highScore = playerScore;
+            highScoreText.text = "High Score: " + highScore.ToString();
+        }
+        PlayerPrefs.SetInt("highScore", highScore);
     }
 
 
