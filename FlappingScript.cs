@@ -21,6 +21,6 @@ public class FlappingScript : MonoBehaviour
     [ ContextMenu( "Flap" ) ]
     public void flap()
     {
-        myAnimator.SetTrigger("Space");
+        myAnimator.SetTrigger( "Space" );
     }
 }

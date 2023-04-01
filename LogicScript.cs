@@ -6,11 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class LogicScript : MonoBehaviour
 {
-    public int playerScore;
+    private int playerScore;
     public Text scoreText;
     public GameObject gameOverScreen;
+    public GameObject scoresToStart;
     public AudioSource bing;
     public AudioSource bong;
+
 
 
     [ ContextMenu( "Increase Score" ) ]
@@ -20,6 +22,12 @@ public class LogicScript : MonoBehaviour
         playerScore += scoreToAdd;
         scoreText.text = playerScore.ToString();
     }
+
+    //public void startGame()
+    //{
+    //    SceneManager.LoadScene( "Active Game" );
+    //    bing.Play();
+    //}
 
     public void restartGame()
     {
@@ -33,5 +41,6 @@ public class LogicScript : MonoBehaviour
         bong.Play();
         gameOverScreen.SetActive( true );
     }
+
 
 }
