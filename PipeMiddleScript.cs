@@ -2,14 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Controls logic associated with pipe middle. part of Pipe prefab
+/// </summary>
 public class PipeMiddleScript : MonoBehaviour
 {
+
     public int scoreToAdd;
-    public LogicScript logic;
+    [ SerializeField ] private LogicScript logic;
 
     private void Start()
     {
-        logic = GameObject.FindGameObjectWithTag( "Logic" ).GetComponent< LogicScript >();
+        logic = GameObject.FindGameObjectWithTag( "Logic" )
+            .GetComponent< LogicScript >();
     }
 
     // Update is called once per frame

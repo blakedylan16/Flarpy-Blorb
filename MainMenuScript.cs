@@ -4,6 +4,9 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Controls logic behind scene change.
+/// </summary>
 public class MainMenuScript : MonoBehaviour
 {
 

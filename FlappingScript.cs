@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Controls flapping animation. Flaps when spacebar is hit
+/// </summary>
 public class FlappingScript : MonoBehaviour
 {
-    public Animator myAnimator;
+    [ SerializeField ] public Animator myAnimator;
 
     // Start is called before the first frame update
     void Start()
@@ -12,11 +15,6 @@ public class FlappingScript : MonoBehaviour
         myAnimator = GetComponent< Animator >();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     [ ContextMenu( "Flap" ) ]
     public void flap()
